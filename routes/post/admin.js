@@ -6,6 +6,7 @@ const Fornecedor = require('../../app/modell/insert/fornecedor');
 const Endereco = require('../../app/modell/insert/endereco');
 const Instituicao = require('../../app/modell/insert/instituicao');
 const Associacao = require('../../app/modell/insert/associacao');
+const Ponto = require('../../app/modell/insert/associacao');
 const authmiddlle = require('../../app/middlle/auth')
 
 //enviar json via json
@@ -59,7 +60,8 @@ router.post("/fornecedor", function fornecedor (req, res){
     razao_social: req.body.razao_social,
     cnpj: req.body.cnpj,
     insc_municipal: req.body.insc_municipal,
-    insc_estadual: req.body.insc_estadual
+    insc_estadual: req.body.insc_estadual,
+    servico: req.body.servico
   }).then(function(data){
     res.json("Sucesso"+data)
   }).catch(function(erro){
@@ -98,7 +100,17 @@ router.post("/endereco",function endereco(req, res){
 })
 // Rota de Endereco Fim //
 
-
+// Rota de ponto Inicio //
+router.post("/ponto",function endereco(req, res){
+  Ponto.create({
+    Id_associado: req.body.Id_associado
+  }).then(function(data){
+    res.json("Sucesso"+data)
+  }).catch(function(erro){
+    res.json("Erro "+ erro)
+  })
+})
+// Rota de ponto Fim //
 
 //export route//
 module.exports = router

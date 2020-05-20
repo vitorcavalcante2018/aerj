@@ -18,6 +18,9 @@ const Fornecedor = db.sequelize.define('fornecedor',{
   insc_estadual:{
     type: db.Sequelize.DECIMAL(9)
   },
+  servico:{
+    type: db.Sequelize.STRING
+  },
 })
 
 //Fornecedor.sync({force:true});
